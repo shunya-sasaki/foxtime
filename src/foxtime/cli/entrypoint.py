@@ -2,8 +2,6 @@
 
 import random
 
-from prompt_toolkit import prompt
-from prompt_toolkit.formatted_text import HTML
 from prompt_toolkit.styles import Style
 
 from foxtime.cli.banner import Banner
