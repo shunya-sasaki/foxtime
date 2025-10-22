@@ -3,7 +3,7 @@ name = "foxtime"
 description = ""
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["prompt_toolkit", "rich", "pydantic"]
+dependencies = ["prompt_toolkit", "rich", "pydantic", "tzdata", "pywin32"]
 dynamic = ["version"]
 
 [project.scripts]
