@@ -101,7 +101,7 @@ class OutlookCalendarReader:
             calendar = namespace.GetDefaultFolder(9)
             items = calendar.Items
             items.Sort("Start")
-            items.IncludeRecurrence = True
+            items.IncludeRecurrences = True
 
             start_dt, end_dt = cls.get_today_time_range()
             restriction = cls.build_outlook_restrict_filter(start_dt, end_dt)
