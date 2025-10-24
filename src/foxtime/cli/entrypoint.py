@@ -2,8 +2,6 @@
 
 import random
 
-from prompt_toolkit.styles import Style
-
 from foxtime.cli.banner import Banner
 from foxtime.cli.rich_table import ScheduleTable
 from foxtime.reader import OutlookCalendarReader

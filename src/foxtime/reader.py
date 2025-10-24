@@ -5,8 +5,6 @@ from __future__ import annotations
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
-from typing import List
-from typing import Optional
 
 import pythoncom
 import win32com.client
@@ -20,7 +18,7 @@ class OutlookCalendarReader:
     """A class to read calendar events from Outlook."""
 
     @staticmethod
-    def _to_local_iso(dt) -> str:
+    def _to_local_iso(dt: datetime) -> str:
         """Convert a datetime object to a local ISO 8601 string."""
         local_tz = datetime.now().astimezone().tzinfo
         if getattr(dt, "tzinfo", None) is None:
@@ -30,7 +28,7 @@ class OutlookCalendarReader:
         return dt.isoformat()
 
     @staticmethod
-    def _split_categories(cat: Optional[str]) -> List[str]:
+    def _split_categories(cat: str | None) -> list[str]:
         if not cat:
             return []
         return [c.strip() for c in cat.split(",") if c.strip()]
@@ -108,7 +106,7 @@ class OutlookCalendarReader:
             start_dt, end_dt = cls.get_today_time_range()
             restriction = cls.build_outlook_restrict_filter(start_dt, end_dt)
             restricted = items.Restrict(restriction)
-            events: List[CalendarEvent] = []
+            events: list[CalendarEvent] = []
             for item in restricted:
                 try:
                     evt = cls.appointment_to_event(item)
