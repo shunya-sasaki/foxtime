@@ -1,6 +1,7 @@
 """Rich schedule table class."""
 
 import datetime
+from typing import Any
 from zoneinfo import ZoneInfo
 
 from pydantic import BaseModel
@@ -21,14 +22,14 @@ class _TableRow(BaseModel):
     start_datetime: str = Field(default="00:00", init=False)
     end_datetime: str = Field(default="00:00", init=False)
 
-    def model_post_init(self, context, /) -> None:
+    def model_post_init(self, context: Any, /) -> None:
         self.start_datetime = (
             datetime.datetime.fromisoformat(self.start)
             .astimezone(ZoneInfo(self.timezone))
             .strftime("%H:%M")
         )
         self.end_datetime = (
-            datetime.datetime.fromisoformat(self.start)
+            datetime.datetime.fromisoformat(self.end)
             .astimezone(ZoneInfo(self.timezone))
             .strftime("%H:%M")
         )
